@@ -2,25 +2,27 @@ class Calculator:
     def add(self, a, b):
         return a + b
 
-    def subtract(self, a, b):
-        return b - a
+    def subtract(self, a, b): #fix
+        return a - b
 
     def multiply(self, a, b):
         result = 0
-        for i in range(b+1):
+        for i in range(b): #fix loop, b+1 make extra muultiply
             result = self.add(result, a)
         return result
 
     def divide(self, a, b):
         result = 0
-        while a > b:
+        while a >= b:#include case == 
             a = self.subtract(a, b)
             result += 1
         return result
     
-    def modulo(self, a, b):
-        while a <= b:
-            a = a-b
+    def modulo(self, a, b): #fix bug subtract fix
+        while a >= b if b > 0 else a <= 0:
+            a = self.subtract(a, b)
+        while a < 0:
+            a = self.add(a, b)
         return a
 
 # Example usage:
